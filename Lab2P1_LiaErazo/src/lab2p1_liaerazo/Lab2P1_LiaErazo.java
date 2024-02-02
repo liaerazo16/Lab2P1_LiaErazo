@@ -120,34 +120,43 @@ public class Lab2P1_LiaErazo {
                 int length = 5;
                 while (word.length() == length) {
                     System.out.println("\tAdivinar palabra");
+                    boolean match=true;
                     while (intentos <= 6) {
                         System.out.println("Ingrese palabra :");
                         String palabra = read.nextLine().toLowerCase();
                         if (palabra.length() == length) {
                             int i = 0;
+                            
                             while (i < word.length()) {
                                 char letter = word.charAt(i);
                                 char letra = palabra.charAt(i);
-                                char letter_found = 'a';
+                                char letter_found = ' ';
                                 if (letter == letra) {
                                     letter_found = Character.toUpperCase(letra);
-                                    System.out.print("Resultado: " + letter_found);
                                 }
-                                System.out.print("-");
-
+                                System.out.print(letter_found);
+                                if (letter!=letra) {
+                                    System.out.print("-");
+                                    match=false;
+                                }
                                 i++;
                             }
                             System.out.println();
-                            if (palabra == word) {
+                            if (match) {
                                 System.out.println("Ha ganado la partida!");
+                                break;
                             }
                             if (intentos == 6) {
                                 System.out.println("Se ha quedado sin intentos. Has perdido la partida :(");
+                                break;
                             }
                         } else {
-                            System.out.println("Intentelo de nuevo");
+                            System.out.println("Intentelo de nuevo, ingrese una palabra con 5 caracteres");
                         }
                         intentos++;
+                    }
+                    if (match) {
+                        break;
                     }
                 }
                 break;//wordle
