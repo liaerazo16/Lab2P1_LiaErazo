@@ -114,19 +114,18 @@ public class Lab2P1_LiaErazo {
                 }
                 break;
             case 2:
-                int intentos = 0;
+                int intentos = 6;
                 System.out.println("Ingrese palabra de 5 carcteres :");
                 String word = read.nextLine().toLowerCase();
                 int length = 5;
+                 System.out.println("\tAdivinar palabra");
                 while (word.length() == length) {
-                    System.out.println("\tAdivinar palabra");
-                    boolean match=true;
+                    boolean match = true;
                     while (intentos <= 6) {
                         System.out.println("Ingrese palabra :");
                         String palabra = read.nextLine().toLowerCase();
                         if (palabra.length() == length) {
                             int i = 0;
-                            
                             while (i < word.length()) {
                                 char letter = word.charAt(i);
                                 char letra = palabra.charAt(i);
@@ -135,29 +134,32 @@ public class Lab2P1_LiaErazo {
                                     letter_found = Character.toUpperCase(letra);
                                 }
                                 System.out.print(letter_found);
-                                if (letter!=letra) {
+                                if (letter != letra) {
                                     System.out.print("-");
-                                    match=false;
+                                    match = false;
                                 }
                                 i++;
                             }
                             System.out.println();
+                            intentos--;
                             if (match) {
                                 System.out.println("Ha ganado la partida!");
                                 break;
                             }
-                            if (intentos == 6) {
+                            if (intentos == 0) {
                                 System.out.println("Se ha quedado sin intentos. Has perdido la partida :(");
                                 break;
                             }
+
                         } else {
                             System.out.println("Intentelo de nuevo, ingrese una palabra con 5 caracteres");
                         }
-                        intentos++;
+
                     }
                     if (match) {
                         break;
                     }
+                    break;
                 }
                 break;//wordle
             case 3:
